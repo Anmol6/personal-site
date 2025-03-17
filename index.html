@@ -80,6 +80,10 @@
             color: var(--text-color);
         }
         
+        aside .section-title:first-child {
+            margin-top: 0;
+        }
+        
         .project-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -122,6 +126,10 @@
         
         .sidebar-section {
             margin-bottom: 1.5rem;
+        }
+        
+        aside .sidebar-section:first-of-type {
+            margin-top: 0.5rem;
         }
     </style>
 </head>
@@ -174,8 +182,8 @@
         </main>
         
         <aside>
+            <div class="section-title">Work</div>
             <div class="sidebar-section">
-                <div class="section-title">Work</div>
                 <p>• Enterprise Platform @ You.com</p>
                 <p>• Founding Engineer @ Fintech Startup</p>
                 <p>• ML Safety in Banking</p>
