@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intro to ColBERT | Anmol</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #fff;
+            --text-color: #333;
+            --accent-color: #3a86ff;
+            --muted-color: #718096;
+            --border-radius: 12px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 2rem;
+            background-color: var(--bg-color);
+            font-size: 16px;
+        }
+
+        a {
+            color: var(--accent-color);
+            text-decoration: none;
+            transition: opacity 0.15s ease;
+        }
+
+        a:hover {
+            opacity: 0.8;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 2rem;
+            font-size: 0.9rem;
+        }
+
+        h1 {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .date {
+            color: var(--muted-color);
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+        }
+
+        h2 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        ul, ol {
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        code {
+            background-color: #f5f5f5;
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            font-size: 0.9em;
+        }
+
+        pre {
+            background-color: #f5f5f5;
+            padding: 1rem;
+            border-radius: var(--border-radius);
+            overflow-x: auto;
+            margin-bottom: 1rem;
+        }
+
+        pre code {
+            background: none;
+            padding: 0;
+        }
+
+        blockquote {
+            border-left: 3px solid var(--accent-color);
+            padding-left: 1rem;
+            margin: 1.5rem 0;
+            color: var(--muted-color);
+            font-style: italic;
+        }
+
+        img {
+            max-width: 100%;
+            border-radius: var(--border-radius);
+            margin: 1rem 0;
+        }
+
+        .caption {
+            font-size: 0.85rem;
+            color: var(--muted-color);
+            text-align: center;
+            margin-top: -0.5rem;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <a href="../" class="back-link">← Back</a>
+
+    <article>
+        <h1>Intro to ColBERT</h1>
+        <div class="date">January 2024</div>
+
+        <p>Do you have a query? Do you have documents that might answer it? Let's focus on the question of our times: given a query, how can we fetch the most <em>relevant</em> documents?</p>
+
+        <h2>Vanilla RAG</h2>
+        <p>Usually, a dense retrieval RAG pipeline goes like:</p>
+        <ol>
+            <li>Embed your query</li>
+            <li>Go to your store of document vectors & find the top-k documents whose embeddings are closest to your query (ie. most semantically similar)</li>
+            <li>Feed these k documents to your LLM as context</li>
+        </ol>
+        <p><em>Note: Different RAG pipelines are variations on each of these steps.</em></p>
+
+        <p>All is well, right? Not quite. Document vectors make tradeoffs between capturing global & local context:</p>
+        <ul>
+            <li>If your documents are small, the doc vector won't capture overall context</li>
+            <li>If they're too large, the vectors will miss the intricate details of the document</li>
+        </ul>
+        <p>Take this example: a dense embedding will encode 'I love to run' & 'I hate to run' pretty close to each other.</p>
+
+        <h2>ColBERT</h2>
+        <p>ColBERT solves this; it introduces the following powerful ideas:</p>
+        <ul>
+            <li>Instead of matching a single query vector against a single document vector (and missing lots of context, as mentioned above), it encodes an embedding vector for <em>each token</em> of the query and document and makes pairwise comparisons. This embedding is encoded via BERT (so of course, it makes use of the power of transformers in keeping context from other tokens). Each of these multi-vector sets are referred to as a 'bag of embeddings'.</li>
+        </ul>
+
+        <p>The query-doc similarity score is computed as follows:</p>
+        <ul>
+            <li>For each token vector in the query, finds the closest document token and computes the cosine similarity (referred to as the <em>max-sim</em> score)</li>
+            <li>Adds the max-sim scores across all query tokens to get the final similarity score between the query and that document</li>
+            <li>Since this computation is essentially doing nearest neighbour search, a well-studied problem, ColBERT prunes out a lot of low-scoring candidate docs pretty quickly & makes ColBERT quite scalable</li>
+        </ul>
+
+        <p>In the end, you get embeddings that capture both keyword information as well as some context at the level of a few tokens. You can then ask a query in the style of the responses you want.</p>
+
+        <img src="images/colbert-001.png" alt="ColBERT late interaction architecture diagram showing Question Encoder and Passage Encoder with MaxSim operations">
+        <p class="caption">Figure 1: The late interaction architecture. Diagram from Khattab et al. (2021b).</p>
+
+        <h3>ColBERT v2 Improvements</h3>
+        <p>Since the ColBERT paper in 2020, ColBERT v2 has come out. The key improvement is the <strong>efficient encoding of vectors</strong>, which falls from the following observation:</p>
+        <ul>
+            <li>Most token vectors tend to organize around a few thousand clusters</li>
+            <li>Thus each vector can be represented as the closest centroid plus a small delta that nudges the dimensions in the right direction. This results in an encoding of around 20 bytes (which is incredibly small)</li>
+            <li>So while ColBERT v1 was ~10x the size of a comparable RAG vector store of the same data, ColBERT v2 is comparable in size (or just slightly larger)</li>
+        </ul>
+
+        <blockquote>
+            When a document is embedded by ColBERT, it isn't represented as a document, but as the sum of its parts. This fundamentally changes the nature of training our model, to a much easier task: it doesn't need to cram every possible meaning into a single vector, it just needs to capture the meaning of a few tokens at a time.
+        </blockquote>
+
+        <h2>Example: Learning about the Industrial Revolution</h2>
+        <p>Let's use the Wikipedia page on the Industrial Revolution as our corpus. When we ask ColBERT: "how did the economy change after the industrial revolution?", we get highly relevant passages about GDP growth, standard of living improvements, and economic transformation.</p>
+
+        <h3>More Complex Query</h3>
+        <p>Let's make the query more complicated: "From where did British iron manufacturers use considerable amounts of iron?"</p>
+        <p>ColBERT returns the text "Up to that time, British iron manufacturers had used considerable amounts of iron imported from Sweden and Russia to supplement domestic supplies" in the highest-ranked result, while dense embedding retrieval did not rank it even in the top 5. <strong>ColBERT can do both semantic as well as keyword matching!</strong></p>
+
+        <h2>Parting Thoughts</h2>
+        <p>I'm not asking you to trust me blindly here; this is a tiny corpus & does not reflect the tradeoffs you'll make in a production system with cost, latency, size & snippet quality.</p>
+        <p>Having good benchmarks for your use case will help you better understand what the best system is but I think you should at least give ColBERT a serious look!</p>
+
+        <h2>Resources</h2>
+        <ul>
+            <li><a href="https://arxiv.org/abs/2004.12832" target="_blank">The original ColBERT paper</a></li>
+            <li><a href="https://github.com/bclavie/RAGatouille" target="_blank">RAGatouille library</a></li>
+        </ul>
+    </article>
+</body>
+</html>

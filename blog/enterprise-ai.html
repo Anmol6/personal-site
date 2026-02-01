@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Starting Your AI Journey as an Enterprise | Anmol</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #fff;
+            --text-color: #333;
+            --accent-color: #3a86ff;
+            --muted-color: #718096;
+            --border-radius: 12px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 2rem;
+            background-color: var(--bg-color);
+            font-size: 16px;
+        }
+
+        a {
+            color: var(--accent-color);
+            text-decoration: none;
+            transition: opacity 0.15s ease;
+        }
+
+        a:hover {
+            opacity: 0.8;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 2rem;
+            font-size: 0.9rem;
+        }
+
+        h1 {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .date {
+            color: var(--muted-color);
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+        }
+
+        h2 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        ul, ol {
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        strong {
+            font-weight: 600;
+        }
+
+        img {
+            max-width: 100%;
+            border-radius: 12px;
+            margin: 1.5rem 0;
+        }
+
+        .caption {
+            font-size: 0.85rem;
+            color: var(--muted-color);
+            text-align: center;
+            margin-top: -1rem;
+            margin-bottom: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+    <a href="../" class="back-link">← Back</a>
+
+    <article>
+        <h1>Starting Your AI Journey as an Enterprise</h1>
+        <div class="date">March 2025</div>
+
+        <p>I believe we're living through an odd dichotomy: there is universal excitement about AI agents but we're missing grounded principles for deploying them to solve business problems. This essay is an attempt to help AI-enthused orgs think more clearly about the following questions:</p>
+        <ul>
+            <li><em>Should</em> they deploy AI agents?</li>
+            <li>If so, <em>what</em> workflows or roles are best suited for AI deployment?</li>
+            <li>How can a business think strategically about achieving org-wide AI transformation?</li>
+        </ul>
+
+        <p><strong>Business:</strong> One way to view a business is that it's a set of people and processes that take inputs (capital, raw material) and transform them into goods and services.</p>
+
+        <p><strong>AI Agent:</strong> In this essay, we'll view an AI agent as a tool that can perform a unit of digital cognitive labour. Agents can do simple single-pass tasks like summarizing text, but can also follow dynamic task-dependent trajectories.</p>
+
+        <p>Naturally then, businesses with the most reliance on cognitive labour will benefit the most from these AI agents:</p>
+        <ul>
+            <li>Law firms</li>
+            <li>Software companies</li>
+            <li>Marketing agencies</li>
+            <li>Accounting firms</li>
+            <li>Consulting firms</li>
+        </ul>
+
+        <p>On the other hand, there are businesses with little to medium amounts of cognitive work (restaurants, trades businesses, auto repair shops). This is not to say that they cannot benefit from AI tools—they definitely can. However, the core value proposition for such businesses remains anchored in the physical world of atoms rather than bits.</p>
+
+        <h2>Where to Deploy AI</h2>
+        <p>Before an org starts to answer this question, it should systematically <strong>map out its internal workflows</strong>.</p>
+
+        <h3>Mapping Out Your Business Workflows</h3>
+        <ol>
+            <li><strong>Identify Major Functions & Processes:</strong> List all key functional areas (Operations, Finance, Marketing, Customer Support, IT, Legal, etc.) and core workflows in each function.</li>
+            <li><strong>Map Each Workflow in Detail:</strong> Define start/end points, list all tasks in sequence, identify inputs and outputs, and list owners for each task.</li>
+            <li><strong>Label Systems and Tools Involved:</strong> Document current software/platforms and highlight data flow between systems.</li>
+            <li><strong>Gather Metrics:</strong> Measure time and cost, assess error rates and rework.</li>
+        </ol>
+
+        <h2>Strategies for AI Deployment</h2>
+        <p>Once a business has mapped out its workflows, it should describe each workflow along the following metrics:</p>
+        <ul>
+            <li><strong>Business impact:</strong> What is the value of that workflow getting done? Can you put a $ amount to it?</li>
+            <li><strong>Number of interfaces:</strong> The fewer the type of people that need to interact with the workflow, the easier it is to augment with an AI agent.</li>
+            <li><strong>Cognitive complexity:</strong> How hard does a human have to think to do this task?</li>
+            <li><strong>Noise in data:</strong> How noisy are the data inputs into the process?</li>
+            <li><strong>Ease of verification:</strong> How easy is it to verify if the workflow was executed correctly?</li>
+        </ul>
+
+        <img src="images/enterprise-000.png" alt="Chart showing workflow metrics for a law firm comparing Invoice Processing, Legal Case Analysis, and Customer Support across Business Impact, Cross-Department Interfaces, Cognitive Complexity, Data Noise, and Ease of Verification">
+        <p class="caption">Example workflow mapping for a law firm.</p>
+
+        <h3>Land and Expand</h3>
+        <p>This approach is the classic "start small, prove value, then scale" playbook. You look for workflows that have enough business impact to be worth your while but aren't so mission-critical that mistakes could derail your entire company's faith in AI.</p>
+        <ul>
+            <li>Focus on <strong>moderate-impact tasks</strong> that free up tangible hours or reduce clear bottlenecks</li>
+            <li>Keep the <strong>cross-department complexity low</strong>. More people → more constraints → more problems to solve</li>
+            <li>Choose tasks with <strong>low-to-medium cognitive complexity</strong> so you're not fighting edge cases that require constant human overrides</li>
+        </ul>
+
+        <h3>Top-Down Transformation</h3>
+        <p>This is where leadership pursues a broad, decisive mandate for org-wide AI transformation. Since multiple departments and workflows are targeted at once, it can generate huge gains—but it also requires serious executive buy-in, robust infrastructure, and a higher tolerance for complexity.</p>
+        <ul>
+            <li>Start by focusing on <strong>high-impact workflows</strong> where inefficiencies really hurt the bottom line</li>
+            <li>Expect <strong>cross-department collaboration</strong>, because you're tackling big processes that span finance, marketing, operations, and more</li>
+            <li>Be prepared to handle <strong>high data noise or complexity</strong>, since large-scale transformations often involve cleaning and standardizing data across the entire organization</li>
+        </ul>
+
+        <p>Deciding between Land and Expand and Top-Down Transformation (or using a blend of both) depends on your organization's appetite for risk, budget, and how readily you can mobilize your data and people.</p>
+
+        <p>To summarize: mapping workflows and evaluating them using consistent metrics is the first step. Then choose a strategy—Land and Expand or Top-Down—that matches your organization's risk tolerance and resources.</p>
+    </article>
+</body>
+</html>

@@ -36,10 +36,11 @@
         a {
             color: var(--accent-color);
             text-decoration: none;
+            transition: opacity 0.15s ease;
         }
-        
+
         a:hover {
-            text-decoration: underline;
+            opacity: 0.8;
         }
         
         p {
@@ -96,6 +97,11 @@
             border-radius: var(--border-radius);
             padding: 1rem;
             height: 100%;
+            transition: border-color 0.15s ease;
+        }
+
+        .project-card:hover {
+            border-color: #ccc;
         }
         
         .project-card h3 {
@@ -130,6 +136,20 @@
         
         aside .sidebar-section:first-of-type {
             margin-top: 0.5rem;
+        }
+
+        .blog-item {
+            margin-bottom: 0.5rem;
+        }
+
+        .blog-item a {
+            display: block;
+            line-height: 1.4;
+        }
+
+        .blog-date {
+            font-size: 0.75rem;
+            color: var(--muted-color);
         }
     </style>
 </head>
@@ -189,9 +209,24 @@
                 <p>• Generative Models Research</p>
             </div>
             
+            <div class="section-title">Writing</div>
+            <div class="sidebar-section">
+                <div class="blog-item">
+                    <a href="blog/storyteller.html">AI Systems for the Storyteller</a>
+                    <span class="blog-date">Apr 2025</span>
+                </div>
+                <div class="blog-item">
+                    <a href="blog/enterprise-ai.html">Starting Your AI Journey as an Enterprise</a>
+                    <span class="blog-date">Mar 2025</span>
+                </div>
+                <div class="blog-item">
+                    <a href="blog/colbert.html">Intro to ColBERT</a>
+                    <span class="blog-date">Jan 2024</span>
+                </div>
+            </div>
+
             <div class="sidebar-section">
                 <div class="section-title">Links</div>
-                <p><a href="https://aijblog.notion.site/writings?v=f08a52c695e944f2a8495e2ee89c7f3f&pvs=74" target="_blank">AI Blog</a></p>
                 <p><a href="https://github.com/Anmol6" target="_blank">GitHub</a></p>
             </div>
         </aside>

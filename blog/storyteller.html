@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Systems for the Storyteller | Anmol</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #fff;
+            --text-color: #333;
+            --accent-color: #3a86ff;
+            --muted-color: #718096;
+            --border-radius: 12px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 2rem;
+            background-color: var(--bg-color);
+            font-size: 16px;
+        }
+
+        a {
+            color: var(--accent-color);
+            text-decoration: none;
+            transition: opacity 0.15s ease;
+        }
+
+        a:hover {
+            opacity: 0.8;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 2rem;
+            font-size: 0.9rem;
+        }
+
+        h1 {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .date {
+            color: var(--muted-color);
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+        }
+
+        h2 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        ul, ol {
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        strong {
+            font-weight: 600;
+        }
+
+        em {
+            font-style: italic;
+        }
+
+        img {
+            max-width: 100%;
+            border-radius: 12px;
+            margin: 1.5rem 0;
+        }
+
+        .caption {
+            font-size: 0.85rem;
+            color: var(--muted-color);
+            text-align: center;
+            margin-top: -1rem;
+            margin-bottom: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+    <a href="../" class="back-link">← Back</a>
+
+    <article>
+        <h1>AI Systems for the Storyteller</h1>
+        <div class="date">April 2025</div>
+
+        <p>You get to your office desk, run your data through your analytics AI agent, smile at the pretty charts, and then take a moment to appreciate how far you've come from a thousand days ago when you did all of this on your own.</p>
+
+        <p>Next, you get ready for stand-up where you'll present "your" analysis in the form of a nice logical story. But then something interesting happens. Unlike ChatGPT, a colleague questions a critical assumption you made—"I think this column means something else." You pause, realize your mistake and get to redoing the analysis, this time completely yourself.</p>
+
+        <p>This blog will:</p>
+        <ul>
+            <li>Describe the delegation problem in AI systems</li>
+            <li>Make concrete recommendations for building more robust systems</li>
+        </ul>
+
+        <h2>The Problem</h2>
+        <p>As models improve every few months, our instinct to hand them bigger chunks of work grows. A common pattern:</p>
+        <ol>
+            <li>Skim the high-level business problem</li>
+            <li>Translate it into a semi-vague prompt</li>
+            <li>Receive the agent output and format it for the team</li>
+        </ol>
+
+        <p>This produces three gaps:</p>
+        <ul>
+            <li>Misunderstanding of the problem (key assumptions untested)</li>
+            <li>Lack of insight into the agent's reasoning</li>
+            <li>Low-signal communication with the rest of the team</li>
+        </ul>
+
+        <p>To summarize: <strong>Delegation → disengagement → poor storytelling → weaker outcomes.</strong></p>
+
+        <img src="images/storyteller-000.png" alt="Diagram showing user as a lazy pass-through between Company and AI agents">
+        <p class="caption">The problem: user acts as a pass-through for business problems.</p>
+
+        <h2>The Goal</h2>
+        <p>Instead of acting as a pass-through, the user should be an active storyteller—questioning, revising, and weaving a coherent narrative that solves the business problem. We should aim for a tighter coupling between the user and the AI.</p>
+
+        <img src="images/storyteller-001.png" alt="Diagram showing tight coupling between user and AI agents with bidirectional arrows">
+        <p class="caption">The goal: tighter coupling between the user and AI.</p>
+
+        <h2>Designing Effective Systems</h2>
+        <p>Below are guiding principles and concrete suggestions for building human–AI systems that encourage scrutiny, collaboration, and clear storytelling:</p>
+
+        <h3>1. Show, Don't Just Tell</h3>
+        <p>Hidden reasoning kills understanding.</p>
+        <ul>
+            <li><strong>Surface key assumptions:</strong> Have the agent print the premises it inferred ("growth = MAU", "seasonality ignored")</li>
+            <li><strong>Expose the full trace:</strong> List data sources, filters, and model hops so users know where numbers came from</li>
+            <li><strong>Quantify uncertainty:</strong> Attach confidence scores and offer at least one alternative interpretation the agent briefly considered and rejected</li>
+        </ul>
+
+        <h3>2. Bias Towards Feedback Loops</h3>
+        <ul>
+            <li><strong>Clarify early:</strong> The agent should ask follow-ups when context is thin ("profit or revenue?")</li>
+            <li><strong>Inline feedback loops:</strong> Let users mark-up sentences or figures; the agent re-runs only the affected sections</li>
+            <li><strong>Prompt scaffolds:</strong> Replace the blank box with a short form: goal, data, constraints, output style—three fields that force clearer thinking</li>
+        </ul>
+
+        <h3>3. The User Holds the Pen</h3>
+        <p>Ownership keeps analysts engaged and prevents blind acceptance of pretty charts.</p>
+        <ul>
+            <li><strong>Editable outputs:</strong> Deliver docs & decks that open in the native editor, not a PDF tomb</li>
+            <li><strong>Expose dials:</strong> Dates, segments, model temperature—make them sliders the user can tweak in seconds</li>
+            <li><strong>Branch, don't overwrite:</strong> One-click "fork" spawns a sibling analysis so competing assumptions can coexist</li>
+        </ul>
+
+        <h3>4. Preserve Context</h3>
+        <p>Storytelling is about context, context, and context.</p>
+        <ul>
+            <li><strong>Bridge silos:</strong> Pipe CRM notes, support tickets, and finance tables into the same workspace so the agent can cross-reference</li>
+            <li><strong>Prime with domain knowledge:</strong> Load the company glossary, past retros, and known KPI definitions before each session to cut re-explaining</li>
+        </ul>
+
+        <h3>5. Focus on the Narrative Arc</h3>
+        <p>A list of facts is good but a story is what moves decisions.</p>
+        <ul>
+            <li><strong>Outline first:</strong> The agent proposes a 3-line arc ("problem → evidence → action") before writing prose</li>
+            <li><strong>Synthesize, don't stack:</strong> Encourage paragraphs that connect dots ("sales dipped after marketing paused campaigns") rather than bullet dumps</li>
+        </ul>
+
+        <h2>Takeaway</h2>
+        <p>AI accelerates workflows, but key decisions will still be moved by human voice in the near future. Stay in the loop, shape the arc, and make the numbers speak.</p>
+    </article>
+</body>
+</html>
