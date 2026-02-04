@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The AI Interface Moment | Anmol</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #fff;
+            --text-color: #333;
+            --accent-color: #3a86ff;
+            --muted-color: #718096;
+            --border-radius: 12px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 2rem;
+            background-color: var(--bg-color);
+            font-size: 16px;
+        }
+
+        a {
+            color: var(--accent-color);
+            text-decoration: none;
+            transition: opacity 0.15s ease;
+        }
+
+        a:hover {
+            opacity: 0.8;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 2rem;
+            font-size: 0.9rem;
+        }
+
+        h1 {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .date {
+            color: var(--muted-color);
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+        }
+
+        h2 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        strong {
+            font-weight: 600;
+        }
+
+        em {
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <a href="../" class="back-link">← Back</a>
+
+    <article>
+        <h1>The AI Interface Moment</h1>
+        <div class="date">February 2026</div>
+
+        <p>Seeing so many tools ship first-class MCP integrations to Claude Code. It really feels like future interfaces are being defined right now. A few implications worth thinking through:</p>
+
+        <h2>Claude as the Distribution Chokepoint</h2>
+
+        <p>If MCP becomes the dominant protocol and Claude is the primary consumer of MCP servers, Claude effectively becomes the app store. That's a massive amount of leverage. Apps need Claude more than Claude needs any single app. Classic aggregator dynamic.</p>
+
+        <p>Open question: does this end up looking like iOS (curated, controlled, high-margin) or the open web (fragmented, competitive)? MCP's open spec pulls one way, Claude's dominance as the consumption layer pulls the other.</p>
+
+        <h2>App Differentiation Narrows</h2>
+
+        <p>With Claude mediating the interaction, apps lose control of the surface area where they used to differentiate: the UI. What's left? Strong niches and brand trust. Same as the mobile app store.</p>
+
+        <p>Expect a wave of "MCP-native" startups that are basically thin wrappers, followed by consolidation around tools with genuine depth and data moats.</p>
+
+        <h2>Power Law of Utility</h2>
+
+        <p>Almost certainly a power law where the top 10-15 MCP integrations (GitHub, Linear, Notion, Slack, etc.) deliver the vast majority of value. Everything beyond that tier is fighting for scraps of attention.</p>
+
+        <p>This raises a strategic question for Anthropic: where do you invest in first-party integrations vs. leaving room for the ecosystem? And how aggressively do you build your own versions of the most critical tools?</p>
+
+        <h2>True Personalization is the Next Unlock</h2>
+
+        <p>And it's way harder than people think.</p>
+
+        <p>"I know you're an engineer interested in design" is not personalization, it's a preference setting. The real thing looks like "here are 3 things you should focus on this week to unblock Project X, based on what I've seen across your Slack, docs, and commits." Contextual, opinionated, actionable intelligence that turns an assistant into a co-pilot.</p>
+
+        <p>The compounding effects are massive. The longer you use it, the more valuable it gets, the harder it is to leave. Retention goes brrr. But this is not a plug-and-play property of the model. It requires serious engineering (data pipelines, permission models, memory architectures, context prioritization) and, before any of that, data readiness on the user's side that most orgs simply don't have yet.</p>
+
+        <p>If personalization is the moat, the competitive question shifts from "which model is smartest" to "which model knows me best." That reframes the AI race from a benchmark competition into a data flywheel competition, and it suggests Anthropic's consumer product strategy (claude.ai, memory, projects) isn't a side bet but the whole game.</p>
+
+        <h2>Network Effects, But Not the Kind We're Used To</h2>
+
+        <p>The traditional network effect is "more users make the product better for all users." The emerging one here is different: it's a network of agents that can communicate, coordinate, and transact across tools and contexts on behalf of their users. Your agent talks to my agent, they negotiate a meeting time, pull the relevant docs, and prep us both before we show up.</p>
+
+        <p>Scale that up and you get something like mini economies. Agents procuring services from other agents, delegating subtasks, routing work. The value of being on the network isn't just that more people are there, it's that more capable agents are there, and the density of useful work that can happen without human intervention keeps increasing.</p>
+    </article>
+</body>
+</html>
